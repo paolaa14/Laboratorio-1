@@ -15,6 +15,7 @@ Es importante recordar estos conceptos antes de continuar:
 • Función de probabilidad; consiste en una función matemática, que indica la probabilidad que una variable aleatoria discreta tome cierto valor.
 
 • Curva de densidad: Es una línea que suaviza  la información del histograma, creando una representación continua de la distribución de los datos, permitiendo comprender si esta sesgado o simetrico.
+
 • Histograma: Este tipo de grafico, consiste en la representación de una variable cuantitativa por medio de barras, agrupando los datos, donde en el eje x se representan los intervalos de los datos y en el eje y evidencia la frecuencia de los datos en cierto intervalo.
 
 3. En tercer lugar, se calculó la media de la señal, la desviación estándar, el coficiente de variación y la función de probabilidad para tener un menor análisis de esta, llamamos el archivo de funcioneslargas y codificamos los cálculos, la para luego en la consola de spyder observar lo mencionado previamente. Posterior, creamos un histograma, recalcando que en el eje “y” se encuentra la frecuencia (repeticiones cada valor) , y en el eje “x” los valores de la amplitud (que tan alto llega cada barra) .Para continuar, después de crear el histograma hicimos la curva de densidad en forma de gráfico que nos enseña el centro, la extensión y la forma de los datos de esta señal. Todo esto lo evidenciamos en el archivo llamado funcioneslargas.
