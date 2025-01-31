@@ -6,116 +6,72 @@ import numpy as np
 signal = wfdb.rdrecord("emg_healthy")
 valores = signal.p_signal.flatten()
 
-# a. Contaminar la señal con ruido gaussiano
+# Definir factores de ruido
+factor_ruido_alto = 5
+factor_ruido_bajo = 2  # Menos ruido
+
+# a. Contaminar la señal con ruido gaussiano (alta y baja amplitud)
 mean_noise = 0
-factor_ruido = 5  # Factor de escala para aumentar la cantidad de ruido
-std_noise = np.std(valores) * factor_ruido
+std_noise_alto = np.std(valores) * factor_ruido_alto
+std_noise_bajo = np.std(valores) * factor_ruido_bajo
 
-# Generar ruido gaussiano
-ruido = np.random.normal(mean_noise, std_noise, len(valores))
+ruido_alto = np.random.normal(mean_noise, std_noise_alto, len(valores))
+ruido_bajo = np.random.normal(mean_noise, std_noise_bajo, len(valores))
 
-# Agregar el ruido a la señal
-valores_contaminados = valores + ruido
+valores_contaminados_alto = valores + ruido_alto
+valores_contaminados_bajo = valores + ruido_bajo
 
-# b. Calcular la relación señal a ruido (SNR) para el ruido gaussiano
-potencia_senal = np.mean(valores ** 2)
-potencia_ruido = np.mean(ruido ** 2)
-snr = 10 * np.log10(potencia_senal / potencia_ruido)
+# b. Contaminar la señal con ruido impulsivo (alta y baja amplitud)
+num_impulsos = int(0.01 * len(valores))
+amplitud_impulso_alto = np.max(np.abs(valores)) * 5
+amplitud_impulso_bajo = np.max(np.abs(valores)) * 2
 
-# Imprimir el SNR
-print(f"Relación señal a ruido (SNR) con ruido gaussiano: {snr:.2f} dB")
+ruido_impulsivo_alto = np.zeros_like(valores)
+ruido_impulsivo_bajo = np.zeros_like(valores)
 
-# Graficar la señal original y la señal contaminada con ruido gaussiano
-plt.figure(figsize=(12, 6))
-plt.subplot(2, 1, 1)
-plt.plot(valores, color='b', label='Señal Original')
-plt.title("Señal Original")
-plt.xlabel("Muestras")
-plt.ylabel("Amplitud")
-plt.legend()
-
-plt.subplot(2, 1, 2)
-plt.plot(valores_contaminados, color='r', label='Señal Contaminada con Ruido Gaussiano')
-plt.title(f'Señal Contaminada con Ruido Gaussiano (factor {factor_ruido})')
-plt.xlabel("Muestras")
-plt.ylabel("Amplitud")
-plt.legend()
-
-plt.tight_layout()
-plt.show()
-
-# b. Contaminar la señal con ruido impulsivo
-num_impulsos = int(0.01 * len(valores))  # Ajustar el número de impulsos
-amplitud_impulso = np.max(np.abs(valores)) * 5  # Ajustar la amplitud del impulso
-
-# Generar ruido impulsivo
-ruido_impulsivo = np.zeros_like(valores)
 indices_impulsivos = np.random.choice(len(valores), num_impulsos, replace=False)
-ruido_impulsivo[indices_impulsivos] = amplitud_impulso * (2 * np.random.randint(0, 2, num_impulsos) - 1)  # +amplitud o -amplitud
+ruido_impulsivo_alto[indices_impulsivos] = amplitud_impulso_alto * (2 * np.random.randint(0, 2, num_impulsos) - 1)
+ruido_impulsivo_bajo[indices_impulsivos] = amplitud_impulso_bajo * (2 * np.random.randint(0, 2, num_impulsos) - 1)
 
-# Agregar el ruido impulsivo a la señal
-valores_contaminados_impulsivo = valores + ruido_impulsivo
+valores_contaminados_impulsivo_alto = valores + ruido_impulsivo_alto
+valores_contaminados_impulsivo_bajo = valores + ruido_impulsivo_bajo
 
-# Calcular la relación señal a ruido (SNR) para el ruido impulsivo
-potencia_ruido_impulsivo = np.mean(ruido_impulsivo ** 2)
-snr_impulsivo = 10 * np.log10(potencia_senal / potencia_ruido_impulsivo)
+# c. Contaminar la señal con ruido tipo artefacto (alta y baja amplitud)
+frecuencia_artefacto = 0.1
+amplitud_artefacto_alto = np.max(np.abs(valores)) * 2
+amplitud_artefacto_bajo = np.max(np.abs(valores)) * 0.8
 
-# Imprimir el SNR
-print(f"Relación señal a ruido (SNR) con ruido impulsivo: {snr_impulsivo:.2f} dB")
+ruido_artefacto_alto = amplitud_artefacto_alto * np.sin(2 * np.pi * frecuencia_artefacto * np.arange(len(valores)))
+ruido_artefacto_bajo = amplitud_artefacto_bajo * np.sin(2 * np.pi * frecuencia_artefacto * np.arange(len(valores)))
 
-# Graficar la señal original y la señal contaminada con ruido impulsivo
-plt.figure(figsize=(12, 6))
-plt.subplot(2, 1, 1)
-plt.plot(valores, color='b', label='Señal Original')
-plt.title("Señal Original")
-plt.xlabel("Muestras")
-plt.ylabel("Amplitud")
-plt.legend()
+valores_contaminados_artefacto_alto = valores + ruido_artefacto_alto
+valores_contaminados_artefacto_bajo = valores + ruido_artefacto_bajo
 
-plt.subplot(2, 1, 2)
-plt.plot(valores_contaminados_impulsivo, color='g', label='Señal Contaminada con Ruido Impulsivo')
-plt.title(f'Señal Contaminada con Ruido Impulsivo (amplitud {amplitud_impulso})')
-plt.xlabel("Muestras")
-plt.ylabel("Amplitud")
-plt.legend()
+# Lista con los ruidos y sus nombres
+tipos_ruido = [
+    ("Ruido Gaussiano Alto", valores_contaminados_alto, 'r'),
+    ("Ruido Gaussiano Bajo", valores_contaminados_bajo, 'c'),
+    ("Ruido Impulsivo Alto", valores_contaminados_impulsivo_alto, 'g'),
+    ("Ruido Impulsivo Bajo", valores_contaminados_impulsivo_bajo, 'y'),
+    ("Ruido Artefacto Alto", valores_contaminados_artefacto_alto, 'm'),
+    ("Ruido Artefacto Bajo", valores_contaminados_artefacto_bajo, 'k')
+]
 
-plt.tight_layout()
-plt.show()
+# Generar una figura para cada tipo de ruido
+for titulo, valores_contaminados, color in tipos_ruido:
+    plt.figure(figsize=(10, 6))
 
-# c. Contaminar la señal con ruido tipo artefacto
-# Parámetros del ruido tipo artefacto
-frecuencia_artefacto = 0.1  # Frecuencia de los artefactos
-amplitud_artefacto = np.max(np.abs(valores)) * 2  # Amplitud de los artefactos
+    # Señal original
+    plt.subplot(2, 1, 1)
+    plt.plot(valores, color='b', label='Señal Original')
+    plt.title(f"Señal Original - {titulo}")
+    plt.legend()
 
-# Generar ruido tipo artefacto (sinusoide de baja frecuencia)
-tiempo = np.arange(len(valores))
-ruido_artefacto = amplitud_artefacto * np.sin(2 * np.pi * frecuencia_artefacto * tiempo)
+    # Señal con ruido
+    plt.subplot(2, 1, 2)
+    plt.plot(valores_contaminados, color=color, label=titulo)
+    plt.title(titulo)
+    plt.legend()
 
-# Agregar el ruido tipo artefacto a la señal
-valores_contaminados_artefacto = valores + ruido_artefacto
-
-# Calcular la relación señal a ruido (SNR) para el ruido tipo artefacto
-potencia_ruido_artefacto = np.mean(ruido_artefacto ** 2)
-snr_artefacto = 10 * np.log10(potencia_senal / potencia_ruido_artefacto)
-
-# Imprimir el SNR
-print(f"Relación señal a ruido (SNR) con ruido tipo artefacto: {snr_artefacto:.2f} dB")
-
-# Graficar la señal original y la señal contaminada con ruido tipo artefacto
-plt.figure(figsize=(12, 6))
-plt.subplot(2, 1, 1)
-plt.plot(valores, color='b', label='Señal Original')
-plt.title("Señal Original")
-plt.xlabel("Muestras")
-plt.ylabel("Amplitud")
-plt.legend()
-
-plt.subplot(2, 1, 2)
-plt.plot(valores_contaminados_artefacto, color='m', label='Señal Contaminada con Ruido Tipo Artefacto')
-plt.title(f'Señal Contaminada con Ruido Tipo Artefacto (amplitud {amplitud_artefacto})')
-plt.xlabel("Muestras")
-plt.ylabel("Amplitud")
-plt.legend()
-
-plt.tight_layout()
-plt.show()
+    plt.tight_layout()
+    plt.show()
