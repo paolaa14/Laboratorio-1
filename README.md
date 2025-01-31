@@ -1,1 +1,1 @@
-tfurkuf
+Los códigos creados permiten observar la señal de electromiografía (EMG)………, donde se evidencia la señal captada de ……. . Es importante señalar que la EMG es una técnica que mostrará la condición en la que se encuentran los músculos y los nervios que los controlan, estos nervios envían señales eléctricas  por medio de neuronas para poder visualizar el movimiento del músculo,
