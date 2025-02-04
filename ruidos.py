@@ -65,12 +65,16 @@ for titulo, valores_contaminados, color in tipos_ruido:
     plt.subplot(2, 1, 1)
     plt.plot(valores, color='b', label='Señal Original')
     plt.title(f"Señal Original - {titulo}")
+    plt.xlabel("Tiempo (s)")
+    plt.ylabel("Voltaje (mV)")
     plt.legend()
 
     # Señal con ruido
     plt.subplot(2, 1, 2)
     plt.plot(valores_contaminados, color=color, label=titulo)
     plt.title(titulo)
+    plt.xlabel("Tiempo (s)")
+    plt.ylabel("Voltaje (mV)")
     plt.legend()
 
     plt.tight_layout()
