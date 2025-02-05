@@ -2,6 +2,7 @@ Los códigos creados permiten observar la señal obtenida del sofware PHYSIONET,
 
 1. En primer lugar, se realizó la descarga de la señal del software physionet. En github se evidencian los dos archivos del mismo: .dat y .hea.
 2. ⁠En segundo lugar, se hizo la gráfica de dicha señal en spyder, este sería el archivo que tiene como nombre:  labo1 , donde se verá la señal emg del músculo mencionado.
+<img width="617" alt="Figure 2025-02-04 195526 (0)" src="https://github.com/user-attachments/assets/a93a9324-af44-4cf0-b5a7-09eb5c7e0382" />
 
 
 Es importante recordar estos conceptos antes de continuar: 
