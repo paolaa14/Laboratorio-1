@@ -24,8 +24,8 @@ print(f"Coeficiente de variación: {coeficiente_variacion}%")
 # d. Crear el histograma
 plt.hist(valores, bins=30, density=True, alpha=0.6, color='g')
 plt.title("Histograma de la señal")
-plt.xlabel("Valor de la señal")
-plt.ylabel("Frecuencia")
+plt.xlabel("Voltios(mV)")
+plt.ylabel("Frecuencia relativa")
 plt.show()
 
 # e. Crear la función de probabilidad (aproximada con el histograma)
@@ -35,7 +35,7 @@ bin_centers = (bin_edges[:-1] + bin_edges[1:]) / 2
 
 plt.plot(bin_centers, pdf, label='Función de probabilidad')
 plt.title("Función de probabilidad de la señal")
-plt.xlabel("Valor de la señal")
-plt.ylabel("Probabilidad")
+plt.xlabel("Voltios(mV)")
+plt.ylabel("Frecuencia relativa")
 plt.legend()
 plt.show()

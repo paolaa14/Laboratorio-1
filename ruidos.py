@@ -2,13 +2,19 @@ import wfdb
 import matplotlib.pyplot as plt
 import numpy as np
 
+def calcular_snr(signal_original, signal_ruidosa):
+    potencia_signal = np.mean(signal_original ** 2)
+    potencia_ruido = np.mean((signal_ruidosa - signal_original) ** 2)
+    snr = 10 * np.log10(potencia_signal / potencia_ruido)
+    return snr
+
 # Leer el archivo de señal
 signal = wfdb.rdrecord("emg_healthy")
 valores = signal.p_signal.flatten()
 
 # Definir factores de ruido
 factor_ruido_alto = 5
-factor_ruido_bajo = 2  # Menos ruido
+factor_ruido_bajo = 2
 
 # a. Contaminar la señal con ruido gaussiano (alta y baja amplitud)
 mean_noise = 0
@@ -57,8 +63,11 @@ tipos_ruido = [
     ("Ruido Artefacto Bajo", valores_contaminados_artefacto_bajo, 'k')
 ]
 
-# Generar una figura para cada tipo de ruido
+# Generar una figura para cada tipo de ruido y calcular SNR
 for titulo, valores_contaminados, color in tipos_ruido:
+    snr = calcular_snr(valores, valores_contaminados)
+    print(f"{titulo}: SNR = {snr:.2f} dB")
+    
     plt.figure(figsize=(10, 6))
 
     # Señal original
@@ -72,7 +81,7 @@ for titulo, valores_contaminados, color in tipos_ruido:
     # Señal con ruido
     plt.subplot(2, 1, 2)
     plt.plot(valores_contaminados, color=color, label=titulo)
-    plt.title(titulo)
+    plt.title(f"{titulo} (SNR: {snr:.2f} dB)")
     plt.xlabel("Tiempo (s)")
     plt.ylabel("Voltaje (mV)")
     plt.legend()
