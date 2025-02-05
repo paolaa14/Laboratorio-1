@@ -29,6 +29,10 @@ Tenemos una distribución Centrada en Cero
 El pico del histograma está alrededor de 0 mV, lo cual es esperado porque la señal EMG alterna rápidamente entre valores positivos y negativos, con un promedio cercano a cero.
 
 <img width="392" alt="Figure 2025-02-04 195833 (2)" src="https://github.com/user-attachments/assets/827976c8-a9dc-4db6-98c8-1ef24ed97beb" /> 
+
+La forma de la distribución es simétrica y tiene un pico en cero, lo que indica que la mayoría de los valores de la señal están cerca de este valor.
+
+
 <img width="569" alt="Captura de pantalla 2025-02-04 a la(s) 7 58 58 p m" src="https://github.com/user-attachments/assets/301cef2d-ca7b-4981-8af3-04f6fe8d5ab0" />
 
 Media: ~0.0002 mV
