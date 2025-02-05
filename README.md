@@ -67,11 +67,26 @@ Recordemos que hay distintos tipos de ruidos, los que analizaremos en nuestra se
 
  Estos ruidos los agregamos en dos tipos de condiciones, con amplitudes altas y luego con amplitudes bajas con el objetivo de mirar cómo se comporta la señal (si está gravemente contaminada o si la señal es más fuerte que el ruido), los valores que nos dieron fueron:
 
+<img width="713" alt="Figure 2025-02-04 204634 (0)" src="https://github.com/user-attachments/assets/bcfcc021-620a-4531-80fc-38d14a405034" />
+
+<img width="713" alt="Figure 2025-02-04 204634 (1)" src="https://github.com/user-attachments/assets/d9232891-03d3-4102-b63c-a1998a7e0c92" />
+
 1. SNR con ruido gaussiano alto: -13.99 dB
 1.1. SNR con ruido gaussiano bajo: -5.99 dB
-2. SNR con ruido impulsivo alto: -16.68 dB
+
+<img width="713" alt="Figure 2025-02-04 204634 (2)" src="https://github.com/user-attachments/assets/3e27569a-2d15-4c50-bfd0-7ba361616e05" />
+
+<img width="713" alt="Figure 2025-02-04 204634 (3)" src="https://github.com/user-attachments/assets/5ceb72f6-1012-4005-af82-4d6833fb9b28" />
+
+
+3. SNR con ruido impulsivo alto: -16.68 dB
 2.1. SNR con ruido impulsivo bajo: -8.72 dB
-3. SNR con ruido artefacto alto: -25.71 dB
+
+<img width="713" alt="Figure 2025-02-04 204634 (4)" src="https://github.com/user-attachments/assets/3fc42bca-f16e-4bd6-af0e-1acae6a225bc" />
+
+<img width="713" alt="Figure 2025-02-04 204634 (5)" src="https://github.com/user-attachments/assets/eb4c38a9-58e7-4a6c-96ae-04168853257a" />
+
+5. SNR con ruido artefacto alto: -25.71 dB
 3.1. SNR con ruido artefacto bajo: -17.75 dB
 
 Los cuales se evidencian en el archivo llamado ruidos, para continuar, vamos analizar y explicar cómo interpretar los resultados anteriormente expuestos, para el ítem 1.  en el ruido gaussiano, al implementar amplitudes altas evidencia un valor negativo, lo cual indica que el ruido domina y la señal se encuentra altamente distorsionada, mientras que en el caso de amplitudes bajas, a pesar se poseer un valor negativo se puede observar mucho mejor la señal, ya que esta predomina más que el ruido, aún así sigue contaminada. Para el ítem 2. En el ruido impulsivo, en el caso de las amplitudes altas  y bajas se evidencia un valor negativo, lo que indica que los picos de ruido están sobre saturando la señal ( es más fuerte el ruido que la señal), lo que indica en términos generales que se pierde bastante información, por lo que este tipo de ruido está afectando gravemente la señal, no obstante en comparación se encuentra menos contaminada la de bajas amplitudes.Para el ítem 3, en el ruido artefacto los valores son semejantes en cuanto a que ambos son negativos, esto quiere decir que  las distorsiones o la contaminación es mucho más alta que la señal en sí, no quiere decir que esté mal, solo indica que la señal se encuentra altamente contaminada, sin embargo, esta un poco mejor la de amplitudes bajas, a pesar de estar igualmente contaminada, se acerca al rango anteriormente mencionado.  
