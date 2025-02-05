@@ -60,7 +60,9 @@ Se visualizan los mismos datos que en funciónes largas
 
 Recordemos que hay distintos tipos de ruidos, los que analizaremos en nuestra señal son:
 - RUIDO GAUSSIANO: se suma a la señal presentando un espectro plano y la distribución de sus valores sigue una distribución gaussiana (de ahí el nombre), quien posee un rango ideal o normal de -20 dB a +30dB. 
+
 • RUIDO IMPULSIVO: tiene picos con una amplitud alta, y usualmente la duración no es tan extensa, aun así afecta la calidad de la señal, quien posee un rango normal de +40 dB a +50 dB.
+
 • ⁠RUIDO TIPO ARTEFACTO: este tipo de ruido, usualmente surge cuando se realiza algo a la señal, es decir, cuando se realiza por ejemplo  un proceso de filtración quien posee un rango normal de + 5 dB a +30dB.
 
  Estos ruidos los agregamos en dos tipos de condiciones, con amplitudes altas y luego con amplitudes bajas con el objetivo de mirar cómo se comporta la señal (si está gravemente contaminada o si la señal es más fuerte que el ruido), los valores que nos dieron fueron:
