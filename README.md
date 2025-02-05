@@ -44,8 +44,18 @@ Este valor es extremadamente alto debido a que la media es muy cercana a cero, l
 
 
 
-4. En cuarto lugar, se realizó el mismo procedimiento del ítem 3, pero esta vez con el método de las funciones de Python y esto lo podemos visualizar en el archivo ; funcionescortas . 
-5. ⁠Para finalizar, queríamos contaminar la señal con diferentes tipos de ruidos, esto se hizo llamando nuevamente el archivo labo1, generando el ruido y agregándolo a la señal normal, luego analizamos el SNR que es la señal a ruido (es el ruido que afecta la calidad de la señal y se define como la proporción existente de la amplitud de la señal que se trasmite y la amplitud del ruido que la corrompe, se expresa en decibeles) , para así medir la calidad de nuestra señal.
+4. En cuarto lugar, se realizó el mismo procedimiento del ítem 3, pero esta vez con el método de las funciones de Python y esto lo podemos visualizar en el archivo ; funcionescortas.
+
+<img width="376" alt="Figure 2025-02-04 200725 (3)" src="https://github.com/user-attachments/assets/6c440bfe-6257-431a-9a58-dac28a5ad736" />
+
+<img width="376" alt="Figure 2025-02-04 204024 (1)" src="https://github.com/user-attachments/assets/485350e0-5026-4c3d-bba8-b79e90a86ef5" />
+
+<img width="583" alt="Captura de pantalla 2025-02-04 a la(s) 8 40 30 p m" src="https://github.com/user-attachments/assets/f2b0b6b4-fc0d-4d93-ab42-2fb51c8609b6" />
+
+Se visualizan los mismos datos que en funciónes largas
+
+   
+6. ⁠Para finalizar, queríamos contaminar la señal con diferentes tipos de ruidos, esto se hizo llamando nuevamente el archivo labo1, generando el ruido y agregándolo a la señal normal, luego analizamos el SNR que es la señal a ruido (es el ruido que afecta la calidad de la señal y se define como la proporción existente de la amplitud de la señal que se trasmite y la amplitud del ruido que la corrompe, se expresa en decibeles) , para así medir la calidad de nuestra señal.
 
 Recordemos que hay distintos tipos de ruidos, los que analizaremos en nuestra señal son:
 - RUIDO GAUSSIANO: se suma a la señal presentando un espectro plano y la distribución de sus valores sigue una distribución gaussiana (de ahí el nombre), quien posee un rango ideal o normal de -20 dB a +30dB. 
