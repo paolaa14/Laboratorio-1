@@ -70,8 +70,8 @@ Recordemos que hay distintos tipos de ruidos, los que analizaremos en nuestra se
 
 <img width="713" alt="Figure 2025-02-04 204634 (1)" src="https://github.com/user-attachments/assets/d9232891-03d3-4102-b63c-a1998a7e0c92" />
 
-1. SNR con ruido gaussiano alto: -13.99 dB
-1.1. SNR con ruido gaussiano bajo: -5.99 dB
+1. SNR con ruido gaussiano alto: -13.97 dB
+1.1. SNR con ruido gaussiano bajo: -6.02 dB
 
 <img width="713" alt="Figure 2025-02-04 204634 (2)" src="https://github.com/user-attachments/assets/3e27569a-2d15-4c50-bfd0-7ba361616e05" />
 
