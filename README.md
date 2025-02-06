@@ -44,9 +44,9 @@ Este valor es extremadamente alto debido a que la media es muy cercana a cero, l
 
 4. En cuarto lugar, se realizó el mismo procedimiento del ítem 3, pero esta vez con el método de las funciones de Python y esto lo podemos visualizar en el archivo ; funcionescortas.
 
-<img width="376" alt="Figure 2025-02-04 200725 (3)" src="https://github.com/user-attachments/assets/6c440bfe-6257-431a-9a58-dac28a5ad736" />
 
-<img width="376" alt="Figure 2025-02-04 204024 (1)" src="https://github.com/user-attachments/assets/485350e0-5026-4c3d-bba8-b79e90a86ef5" />
+<img width="488" alt="Figure 2025-02-05 191250 (0)" src="https://github.com/user-attachments/assets/b7b71ec5-7f6c-43e1-9135-229017560017" />
+
 
 <img width="583" alt="Captura de pantalla 2025-02-04 a la(s) 8 40 30 p m" src="https://github.com/user-attachments/assets/f2b0b6b4-fc0d-4d93-ab42-2fb51c8609b6" />
 
