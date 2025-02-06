@@ -27,7 +27,10 @@ Se obtuvo esto:
 
 Tenemos una distribución Centrada en Cero
 El pico del histograma está alrededor de 0 mV, lo cual es esperado porque la señal EMG alterna rápidamente entre valores positivos y negativos, con un promedio cercano a cero.
+
 	•	Las barras del histograma indican cómo se distribuyen los datos reales, mientras que la línea negra suaviza esta información para representar una distribución de probabilidad más continua.
+
+ 
 	•	La coincidencia entre ambos sugiere que la señal tiene una distribución simétrica y centrada en cero, típica de ciertas señales fisiológicas como el EMG en estado de reposo.
 
 
