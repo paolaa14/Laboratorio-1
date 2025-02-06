@@ -45,10 +45,10 @@ hist_normalizado = histograma / (total_samples * bin_width)
 plt.figure(figsize=(8, 6))
 
 # Graficar el histograma
-plt.bar(bin_centers, hist_normalizado, width=bin_width, alpha=0.6, color='blue', label='Histograma')
+plt.bar(bin_centers, hist_normalizado, width=bin_width, alpha=0.6, color='grey', label='Histograma')
 
 # Graficar la función de probabilidad
-plt.plot(bin_centers, hist_normalizado, linestyle='-', color='black', linewidth=2, label='Función de probabilidad')
+plt.plot(bin_centers, hist_normalizado, linestyle='-', color='red', linewidth=2, label='Función de probabilidad')
 
 # Configuración del gráfico
 plt.title("Histograma y función de probabilidad de la señal")
