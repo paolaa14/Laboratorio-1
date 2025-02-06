@@ -21,18 +21,34 @@ print(f"Media: {media}")
 print(f"Desviación estándar: {desviacion_estandar}")
 print(f"Coeficiente de variación: {coeficiente_variacion}%")
 
-# d. Crear el histograma normalizado
-hist, bins = np.histogram(valores, bins=30, density=True)
-bin_centers = (bins[:-1] + bins[1:]) / 2
+# d. Crear el histograma largo
+
+num_bins = 30
+min_valores, max_valores = min(valores), max(valores)
+bin_edges = np.linspace(min_valores, max_valores, num_bins + 1)
+bin_centers = (bin_edges[:-1] + bin_edges[1:]) / 2
+histograma = np.zeros(num_bins)
+
+# Contar frecuencia en cada bin
+for val in valores:
+    for i in range(num_bins):
+        if bin_edges[i] <= val < bin_edges[i + 1]:
+            histograma[i] += 1
+            break
+
+# Normalizar el histograma
+bin_width = (max_valores - min_valores) / num_bins
+total_samples = len(valores)
+hist_normalizado = histograma / (total_samples * bin_width)
 
 # Crear la figura y graficar ambas en la misma
 plt.figure(figsize=(8, 6))
 
 # Graficar el histograma
-plt.hist(valores, bins=30, density=True, alpha=0.6, color='blue', label='Histograma')
+plt.bar(bin_centers, hist_normalizado, width=bin_width, alpha=0.6, color='blue', label='Histograma')
 
 # Graficar la función de probabilidad
-plt.plot(bin_centers, hist, linestyle='-', color='black', linewidth=2, label='Función de probabilidad')
+plt.plot(bin_centers, hist_normalizado, linestyle='-', color='black', linewidth=2, label='Función de probabilidad')
 
 # Configuración del gráfico
 plt.title("Histograma y función de probabilidad de la señal")
