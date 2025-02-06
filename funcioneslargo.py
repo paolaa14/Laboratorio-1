@@ -1,4 +1,5 @@
 import wfdb
+import math
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -6,12 +7,27 @@ import numpy as np
 signal = wfdb.rdrecord("emg_healthy")
 valores = signal.p_signal.flatten()
 
-# a. Calcular la media de la señal
-media = np.add.reduce(valores) / len(valores)
+# a. Calcular la media de la señal manualmente
+suma_informacion = 0
+for valor_informacion in valores:  # Recorremos cada valor de los datos
+    suma_informacion += valor_informacion  # Sumar cada valor a la suma total
+num_informacion = len(valores)  # Obtenemos cuántos valores hay
+media = suma_informacion / num_informacion
+print(f"Media de la señal (Sin función): {media}")
 
-# b. Calcular la desviación estándar
-suma_cuadrados = np.add.reduce((valores - media) ** 2)
-desviacion_estandar = (suma_cuadrados / len(valores)) ** 0.5
+# b. Calcular la desviación estándar manualmente
+# 1. Calcular la suma de las diferencias al cuadrado
+diferencia_al_cuadrado = 0
+for valor_informacion in valores:  # Recorremos cada valor de los datos
+    diferencia = valor_informacion - media  # Calculamos la diferencia entre el valor y la media
+    diferencia_al_cuadrado += diferencia ** 2  # Sumamos el cuadrado de esa diferencia
+
+# 2. Dividir por el número de valores (varianza)
+varianza = diferencia_al_cuadrado / num_informacion
+
+# 3. Calcular la raíz cuadrada de la varianza (desviación estándar)
+desviacion_estandar = math.sqrt(varianza)
+print(f"Desviación estándar de la señal (Sin función): {desviacion_estandar}")
 
 # c. Calcular el coeficiente de variación
 coeficiente_variacion = (desviacion_estandar / media) * 100
