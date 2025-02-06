@@ -17,7 +17,7 @@ Es importante recordar estos conceptos antes de continuar:
 
 • Curva de densidad: Es una línea que suaviza  la información del histograma, creando una representación continua de la distribución de los datos, permitiendo comprender si esta sesgado o simetrico.
 
-• Histograma: Este tipo de grafico, consiste en la representación de una variable cuantitativa por medio de barras, agrupando los datos, donde en el eje x se representan los intervalos de los datos y en el eje y evidencia la frecuencia de los datos en cierto intervalo.
+• Histograma: Este tipo de grafico, consiste en la representación de una variable cuantitativa por medio de barras, agrupando los datos, donde en el eje x se representan los intervalos de los datos y en el eje y evidencia la frecuencia de los datos en cierto intervalo, es la representación empirica de los datos observados.
 
 3. En tercer lugar, se importaron las bibliotecas, como la ¨numpy¨ para relizar operaciones matematicas, o la ¨matplotlib.pyplot¨ para poder realizar los graficos que en este caso son histogramas, para continuar se implemento una parte en el código para leer la señal del documento tomado de physionet, que en el codigo es ¨wfdb.rdrecord("emg_healthy")¨, que va a leer basicamente el archuivo de emg del physionet y lo guarda en una variable que le pusimos signal, después se calculó la media de la señal con ¨(np.add.reduce(valores))¨, la cual suma todos los valores y para dividirlo en el valor total de la señal es ¨(len(valores))¨, posterior a esto se huzo algo similar para la desviación estándar pero  restando los valores de la señal con la media y elevandolos al cuadrado para luego sumarlos, todo esto usando ¨((valores - media) ** 2)¨, y al dividirlo con el total se hace lo mismo que con la media pero tomando la raiz cuadrada de ese resultado, ahora para el coficiente de variación, se obtiene diviendo la desviación estándar por la media y multiplicnado por 100 para mostrarlo en términos de porcentaje, lo cual se refleja en el codigo,  y para la función de probabilidad para tener un menor análisis de esta, llamamos el archivo de funcioneslargas y codificamos los cálculos, la para luego en la consola de spyder observar lo mencionado previamente. Posterior, creamos un histograma , recalcando que en el eje “y” se encuentra la frecuencia relativa (repeticiones cada valor) por que los valores han sido normalizados , y en el eje “x” los valores de la amplitud (que tan alto llega cada barra) en voltaJe (mV) .Para continuar, después de crear el histograma hicimos la curva de densidad en forma de gráfico que nos enseña el centro, la extensión y la forma de los datos de esta señal. Todo esto lo evidenciamos en el archivo llamado funcioneslargas.
 
@@ -27,8 +27,8 @@ Se obtuvo esto:
 
 Tenemos una distribución Centrada en Cero
 El pico del histograma está alrededor de 0 mV, lo cual es esperado porque la señal EMG alterna rápidamente entre valores positivos y negativos, con un promedio cercano a cero.
-
-La forma de la distribución es simétrica y tiene un pico en cero, lo que indica que la mayoría de los valores de la señal están cerca de este valor.
+	•	Las barras del histograma indican cómo se distribuyen los datos reales, mientras que la línea negra suaviza esta información para representar una distribución de probabilidad más continua.
+	•	La coincidencia entre ambos sugiere que la señal tiene una distribución simétrica y centrada en cero, típica de ciertas señales fisiológicas como el EMG en estado de reposo.
 
 
 <img width="569" alt="Captura de pantalla 2025-02-04 a la(s) 7 58 58 p m" src="https://github.com/user-attachments/assets/301cef2d-ca7b-4981-8af3-04f6fe8d5ab0" />
