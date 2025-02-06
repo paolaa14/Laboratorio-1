@@ -22,20 +22,23 @@ print(f"Desviación estándar: {desviacion_estandar}")
 print(f"Coeficiente de variación: {coeficiente_variacion}%")
 
 # d. Crear el histograma
-plt.hist(valores, bins=30, density=True, alpha=0.6, color='g')
-plt.title("Histograma de la señal")
-plt.xlabel("Voltios(mV)")
-plt.ylabel("Frecuencia relativa")
-plt.show()
+plt.figure(figsize=(8, 6))
+counts, bin_edges, _ = plt.hist(valores, bins=30, density=True, alpha=0.6, color='grey', label="Histograma")
 
-# e. Crear la función de probabilidad (aproximada con el histograma)
-counts, bin_edges = np.histogram(valores, bins=30, density=True)
-pdf = counts / np.add.reduce(counts)
+# e. Calcular la función de probabilidad
 bin_centers = (bin_edges[:-1] + bin_edges[1:]) / 2
 
-plt.plot(bin_centers, pdf, label='Función de probabilidad')
-plt.title("Función de probabilidad de la señal")
-plt.xlabel("Voltios(mV)")
+# Normalizar la función de probabilidad con el ancho de los bins para que se ajuste mejor
+bin_width = bin_edges[1] - bin_edges[0]
+pdf = counts / (np.sum(counts) * bin_width)
+
+# Graficar la función de probabilidad sobre el histograma
+plt.plot(bin_centers, pdf, 'r-', linewidth=2, label="Función de probabilidad")
+
+# Configuración del gráfico
+plt.title("Histograma y función de probabilidad de la señal")
+plt.xlabel("Voltios (mV)")
 plt.ylabel("Frecuencia relativa")
 plt.legend()
+plt.grid(True)
 plt.show()
